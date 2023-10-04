@@ -13,5 +13,10 @@ namespace TabuleiroSpace
             TabuleiroColunas = tabuleiroColunas;
             Pecas = new Peca[tabuleiroLinhas, tabuleiroColunas];
         }
+
+        public Peca RetornaPeca(int pecaLinha, int pecaColuna)
+        {
+            return Pecas[pecaLinha, pecaColuna];
+        }
     }
 }
