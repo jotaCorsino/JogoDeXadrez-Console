@@ -15,5 +15,14 @@ namespace TabuleiroSpace
             TabuleiroPeca = tabuleiroPeca;
             QuantidadeDeMovimentosPeca = 0;
         }
+
+        public void IncrementarQuantidadeDeMovimento()
+        {
+            QuantidadeDeMovimentosPeca++;
+        }
+        public void DecrementarQuantidadeDeMovimento()
+        {
+            QuantidadeDeMovimentosPeca--;
+        }
     }
 }

@@ -41,6 +41,18 @@ namespace TabuleiroSpace
             peca.PosicaoPeca = posicao;
         }
 
+        public Peca RetirarPecaDoTabuleiro(Posicao posicao)
+        {
+            if (RetornaPeca(posicao) == null)
+            {
+                return null;
+            }
+            Peca pecaNaPosicao = RetornaPeca(posicao);
+            pecaNaPosicao.PosicaoPeca = null;
+            Pecas[posicao.PosicaoLinha, posicao.PosicaoColuna] = null;
+            return pecaNaPosicao;
+        }
+
         public bool TestePosicaoValida(Posicao posicao)
         {
             if (posicao.PosicaoLinha < 0 || posicao.PosicaoLinha >= TabuleiroLinhas || posicao.PosicaoColuna >= TabuleiroColunas || posicao.PosicaoColuna < 0)

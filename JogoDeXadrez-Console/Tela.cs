@@ -1,5 +1,6 @@
 ﻿using System;
 using TabuleiroSpace;
+using XadrezSpace;
 
 namespace JogoDeXadrez_Console
 {
@@ -18,7 +19,7 @@ namespace JogoDeXadrez_Console
                     }
                     else
                     {
-                        ImprimirPeca(tabuleiro.RetornaPeca(i,j));
+                        ImprimirPeca(tabuleiro.RetornaPeca(i, j));
                         Console.Write(" ");
                     }
                 }
@@ -27,9 +28,17 @@ namespace JogoDeXadrez_Console
             Console.WriteLine("  a b c d e f g h");
         }
 
+        public static PosicaoTabuleiroXadrez LerPosicaoTabuleiroXadrez()
+        {
+            string lerPosicaoTabuleiroXadrez = Console.ReadLine();
+            char coordenadaLetraColuna = lerPosicaoTabuleiroXadrez[0];
+            int coordenadaNumeroLinha = int.Parse($"{lerPosicaoTabuleiroXadrez[1]}");
+            return new PosicaoTabuleiroXadrez(coordenadaLetraColuna, coordenadaNumeroLinha);
+        }
+
         public static void ImprimirPeca(Peca peca)
         {
-            if(peca.CorPeca == Cor.Branca)
+            if (peca.CorPeca == Cor.Branca)
             {
                 Console.Write(peca);
             }

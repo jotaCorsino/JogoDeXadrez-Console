@@ -8,21 +8,27 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        Tabuleiro tabuleiro = new Tabuleiro(8, 8);
-
         try
         {
-            // Peças pretas
-            tabuleiro.ColocarPecaNoTabuleiro(new PecaTorre(Cor.Preta, tabuleiro), new Posicao(0, 0));
-            tabuleiro.ColocarPecaNoTabuleiro(new PecaTorre(Cor.Preta, tabuleiro), new Posicao(1, 3));
-            tabuleiro.ColocarPecaNoTabuleiro(new PecaRei(Cor.Preta, tabuleiro), new Posicao(0, 2));
 
-            //Peças brancas
-            tabuleiro.ColocarPecaNoTabuleiro(new PecaTorre(Cor.Branca, tabuleiro), new Posicao(3, 5));
-            tabuleiro.ColocarPecaNoTabuleiro(new PecaTorre(Cor.Branca, tabuleiro), new Posicao(2, 3));
-            tabuleiro.ColocarPecaNoTabuleiro(new PecaRei(Cor.Branca, tabuleiro), new Posicao(2, 2));
+            PartidaDeXadrez partidaDeXadrez = new PartidaDeXadrez();
 
-            Tela.ImprimirTabuleiro(tabuleiro);
+            while (!partidaDeXadrez.TerminouPartida)
+            {
+                Console.Clear();
+                Tela.ImprimirTabuleiro(partidaDeXadrez.TabuleiroPartida);
+
+                Console.WriteLine();
+                Console.Write("Selecionar peça: ");
+                Posicao origem = Tela.LerPosicaoTabuleiroXadrez().ConvertePosicao();
+
+                Console.Write("Selecionar destino: ");
+                Posicao destino = Tela.LerPosicaoTabuleiroXadrez().ConvertePosicao();
+
+                partidaDeXadrez.ExecutaMovimento(origem, destino);
+            }
+
+
         }
         catch (TabuleiroException mensagemErro)
         {
