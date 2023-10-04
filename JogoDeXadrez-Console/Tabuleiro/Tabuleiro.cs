@@ -18,5 +18,11 @@ namespace TabuleiroSpace
         {
             return Pecas[pecaLinha, pecaColuna];
         }
+
+        public void ColocarPecaNoTabuleiro(Peca peca, Posicao posicao)
+        {
+            Pecas[posicao.PosicaoLinha, posicao.PosicaoColuna] = peca;
+            peca.PosicaoPeca = posicao;
+        }
     }
 }

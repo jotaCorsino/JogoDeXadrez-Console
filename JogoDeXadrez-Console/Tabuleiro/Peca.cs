@@ -8,9 +8,9 @@ namespace TabuleiroSpace
         public int QuantidadeDeMovimentosPeca { get; protected set; }
         public Tabuleiro TabuleiroPeca { get; protected set; }
 
-        public Peca(Posicao posicaoPeca, Cor corPeca, Tabuleiro tabuleiroPeca)
+        public Peca(Cor corPeca, Tabuleiro tabuleiroPeca)
         {
-            PosicaoPeca = posicaoPeca;
+            PosicaoPeca = null;
             CorPeca = corPeca;
             TabuleiroPeca = tabuleiroPeca;
             QuantidadeDeMovimentosPeca = 0;
