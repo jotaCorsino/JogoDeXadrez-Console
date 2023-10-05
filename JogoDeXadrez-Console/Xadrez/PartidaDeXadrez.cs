@@ -30,9 +30,7 @@ namespace XadrezSpace
         private void IniciaPecasNoTabuleiro()
         {
             // Peças Brancas
-            TabuleiroPartida.ColocarPecaNoTabuleiro(new PecaTorre(Cor.Branca, TabuleiroPartida), new PosicaoTabuleiroXadrez('c', 1).ConvertePosicao());
-            TabuleiroPartida.ColocarPecaNoTabuleiro(new PecaTorre(Cor.Branca, TabuleiroPartida), new PosicaoTabuleiroXadrez('c', 2).ConvertePosicao());
-            TabuleiroPartida.ColocarPecaNoTabuleiro(new PecaTorre(Cor.Branca, TabuleiroPartida), new PosicaoTabuleiroXadrez('d', 2).ConvertePosicao());
+
             TabuleiroPartida.ColocarPecaNoTabuleiro(new PecaTorre(Cor.Branca, TabuleiroPartida), new PosicaoTabuleiroXadrez('e', 2).ConvertePosicao());
             TabuleiroPartida.ColocarPecaNoTabuleiro(new PecaTorre(Cor.Branca, TabuleiroPartida), new PosicaoTabuleiroXadrez('e', 1).ConvertePosicao());
             TabuleiroPartida.ColocarPecaNoTabuleiro(new PecaRei(Cor.Branca, TabuleiroPartida), new PosicaoTabuleiroXadrez('d', 1).ConvertePosicao());

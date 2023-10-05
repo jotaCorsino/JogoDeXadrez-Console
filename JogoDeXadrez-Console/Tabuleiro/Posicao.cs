@@ -12,6 +12,12 @@ namespace TabuleiroSpace
             PosicaoColuna = posicaoColuna;
         }
 
+        public void DefinirValoresParaPosicao(int posicaoLinha, int posicaoColuna)
+        {
+            PosicaoLinha = posicaoLinha;
+            PosicaoColuna = posicaoColuna;
+        }
+
         public override string ToString()
         {
             return $"{PosicaoLinha}, {PosicaoColuna}";

@@ -1,7 +1,7 @@
 ﻿
 namespace TabuleiroSpace
 {
-    internal class Peca
+    abstract class Peca
     {
         public Posicao PosicaoPeca { get; set; }
         public Cor CorPeca { get; protected set; }
@@ -15,6 +15,8 @@ namespace TabuleiroSpace
             TabuleiroPeca = tabuleiroPeca;
             QuantidadeDeMovimentosPeca = 0;
         }
+
+        public abstract bool[,] MovimentosPossiveisPeca();
 
         public void IncrementarQuantidadeDeMovimento()
         {

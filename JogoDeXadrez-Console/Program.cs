@@ -22,7 +22,13 @@ internal class Program
                 Console.Write("Selecionar peça: ");
                 Posicao origem = Tela.LerPosicaoTabuleiroXadrez().ConvertePosicao();
 
-                Console.Write("Selecionar destino: ");
+                bool[,] marcaMovimentosPossiveis = partidaDeXadrez.TabuleiroPartida.RetornaPeca(origem).MovimentosPossiveisPeca();
+
+                Console.Clear();
+                Tela.ImprimirTabuleiro(partidaDeXadrez.TabuleiroPartida, marcaMovimentosPossiveis);
+
+                Console.WriteLine();
+                Console.Write("Mover para: ");
                 Posicao destino = Tela.LerPosicaoTabuleiroXadrez().ConvertePosicao();
 
                 partidaDeXadrez.ExecutaMovimento(origem, destino);
