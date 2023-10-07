@@ -15,31 +15,46 @@ internal class Program
 
             while (!partidaDeXadrez.TerminouPartida)
             {
-                Console.Clear();
-                Tela.ImprimirTabuleiro(partidaDeXadrez.TabuleiroPartida);
+                try
+                {
+                    Console.Clear();
+                    Tela.ImprimirTabuleiro(partidaDeXadrez.TabuleiroPartida);
 
-                Console.WriteLine();
-                Console.Write("Selecionar peça: ");
-                Posicao origem = Tela.LerPosicaoTabuleiroXadrez().ConvertePosicao();
+                    Tela.ImprimirPartida(partidaDeXadrez);
 
-                bool[,] marcaMovimentosPossiveis = partidaDeXadrez.TabuleiroPartida.RetornaPeca(origem).MovimentosPossiveisPeca();
+                    Posicao origem = Tela.LerPosicaoTabuleiroXadrez("Selecionar Peça: ", partidaDeXadrez).ConvertePosicao();
+                    partidaDeXadrez.TestePosicaoDeOrigem(origem);
 
-                Console.Clear();
-                Tela.ImprimirTabuleiro(partidaDeXadrez.TabuleiroPartida, marcaMovimentosPossiveis);
 
-                Console.WriteLine();
-                Console.Write("Mover para: ");
-                Posicao destino = Tela.LerPosicaoTabuleiroXadrez().ConvertePosicao();
+                    bool[,] marcaMovimentosPossiveis = partidaDeXadrez.TabuleiroPartida.RetornaPeca(origem).MovimentosPossiveisPeca();
 
-                partidaDeXadrez.ExecutaMovimento(origem, destino);
+                    Console.Clear();
+                    Tela.ImprimirTabuleiro(partidaDeXadrez.TabuleiroPartida, marcaMovimentosPossiveis);
+
+                    Posicao destino = Tela.LerPosicaoTabuleiroXadrez("Mover para: ", partidaDeXadrez).ConvertePosicao();
+
+                    partidaDeXadrez.RealizaJogada(origem, destino);
+
+                }
+                catch (TabuleiroException mensagemErro)
+                {
+                    ConsoleColor corConsolePadrao = Console.ForegroundColor;
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine(mensagemErro.Message);
+                    Console.ReadLine();
+                    Console.ForegroundColor = corConsolePadrao;
+                }
             }
 
 
         }
         catch (TabuleiroException mensagemErro)
         {
+            ConsoleColor corConsolePadrao = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(mensagemErro.Message);
+            Console.ReadLine();
+            Console.ForegroundColor = corConsolePadrao;
         }
-        Console.ReadLine();
     }
 }

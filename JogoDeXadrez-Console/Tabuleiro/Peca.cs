@@ -16,15 +16,32 @@ namespace TabuleiroSpace
             QuantidadeDeMovimentosPeca = 0;
         }
 
-        public abstract bool[,] MovimentosPossiveisPeca();
+        public bool ExisteMovimentosPossiveis()
+        {
+            bool[,] movimentosPossiceisPeca = MovimentosPossiveisPeca();
+            for (int i = 0; i < TabuleiroPeca.TabuleiroLinhas; i++)
+            {
+                for (int j = 0; j < TabuleiroPeca.TabuleiroColunas; j++)
+                {
+                    if (movimentosPossiceisPeca[i, j])
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
 
         public void IncrementarQuantidadeDeMovimento()
         {
             QuantidadeDeMovimentosPeca++;
         }
+
         public void DecrementarQuantidadeDeMovimento()
         {
             QuantidadeDeMovimentosPeca--;
         }
+
+        public abstract bool[,] MovimentosPossiveisPeca();
     }
 }
